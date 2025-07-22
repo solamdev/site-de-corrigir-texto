@@ -1,0 +1,122 @@
+    *{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        
+        
+    }
+    
+   
+
+    body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(252, 219, 175);
+    }
+
+
+
+    .box{
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(1, 102, 145);
+    height: 500px;
+    width: 700px;
+    border-radius: 3%;
+    border: solid, 2px;
+    z-index: 10;
+    
+    }
+
+        .boxOutput{
+           flex-direction: column;
+           display: flex;
+        }
+
+         .boxinput{
+            flex-direction: column;
+            display: flex; 
+        }  
+
+.input{
+   width: 330px;
+    height: 450px;
+}
+
+.output{
+   width: 330px;
+   height: 450px;
+}
+
+
+label {
+    margin-left: 100px;
+}
+
+.btt {
+    position: relative; 
+    top: 1px;
+    left: 38px;
+    width: 250px;
+    height: 30px;
+    background-color: chartreuse;
+
+}
+
+.btt:hover{
+    opacity: .7;
+}
+
+.box-btn{
+    background-color:  rgb(252, 219, 175);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    
+  
+}
+
+.btn-informal{
+    margin-right: 60px; 
+    height: 30px;
+    width: 130px;
+    border-radius: 8%;
+   background-color: #fdeac7;
+    box-shadow: 1px 10px 20px #888888;
+    border: solid whitesmoke 2px;
+}
+
+.btn-equilibrado{
+margin-right: 60px;
+height: 30px;
+width: 130px;
+border-radius: 8%;
+box-shadow: 1px 10px 20px #888888;
+  background-color: #fdeac7;
+  border: solid whitesmoke 2px;
+}
+
+.btn-formal{
+margin-right: 60px;
+ height: 30px;
+ width: 130px;
+ border-radius: 8%;
+ border: solid, 2px;
+ border: silver;
+ box-shadow: 1px 10px 20px #888888;
+  background-color: #fdeac7;
+  border: solid whitesmoke 2px;
+}
+
+
+.active{
+    background-color: rgb(9, 81, 133);
+}
+
+box-btn, button:hover{
+     background-color: rgb(9, 81, 133);
+}
