@@ -29,7 +29,7 @@ btnFormal.addEventListener('click', async () => {
 btnInformal.addEventListener('click', async () => { 
   btnFormal.classList.remove('active')
   btnInformal.classList.add('active')
-  btnEquilibrado.classList.remove('acitive')
+  btnEquilibrado.classList.remove('active')
   btnEquilibrado.classList.remove('active')
   active = "informal"
   console.log(active)
@@ -41,7 +41,7 @@ form.addEventListener('submit', async (event) => {
   const valorInput = input.value 
   console.log(valorInput)
 
-  const responce = await fetch("http://localhost:3000/chat" ,{
+  const responce = await fetch("https://api-rest-w0uk.onrender.com/chat" ,{
     method: "POST",
     headers:{
       "Content-Type": "application/json"
