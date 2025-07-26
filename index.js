@@ -5,6 +5,8 @@ const form = document.querySelector('.form')
 const btnInformal = document.querySelector('.btn-informal')
 const btnEquilibrado = document.querySelector('.btn-equilibrado')
 const btnFormal = document.querySelector('.btn-formal')
+const btnColar = document.querySelector('.btn-colar')
+const btnCopy = document.querySelector('.btn-copy')
 
 let active = "equilibrado"
 
@@ -26,6 +28,19 @@ btnFormal.addEventListener('click', async () => {
   
 })
 
+btnCopy.addEventListener('click', () => {
+  navigator.clipboard.writeText(output.value)
+})
+
+btnColar.addEventListener('click', () => {
+  navigator.clipboard.readText().then((texto) =>{
+    input.value = texto
+    btt.disabled = false
+
+  })
+
+})
+
 btnInformal.addEventListener('click', async () => { 
   btnFormal.classList.remove('active')
   btnInformal.classList.add('active')
@@ -35,11 +50,23 @@ btnInformal.addEventListener('click', async () => {
   console.log(active)
 })
 
+input.addEventListener('input', async () => {
+  if (input.value.trim()) {
+    btt.disabled = false
+  } 
+  else{
+    btt.disabled = true
+  }
+})
+
+
+
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
   const valorInput = input.value 
   console.log(valorInput)
+  output.value = "..."
 
   const responce = await fetch("https://api-rest-w0uk.onrender.com/chat" ,{
     method: "POST",
