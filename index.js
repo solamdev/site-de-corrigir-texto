@@ -7,6 +7,8 @@ const btnEquilibrado = document.querySelector('.btn-equilibrado')
 const btnFormal = document.querySelector('.btn-formal')
 const btnColar = document.querySelector('.btn-colar')
 const btnCopy = document.querySelector('.btn-copy')
+const copiado = document.querySelector('.copiado')
+const loader = document.querySelector('.loader')
 
 let active = "equilibrado"
 
@@ -28,14 +30,36 @@ btnFormal.addEventListener('click', async () => {
   
 })
 
+output.addEventListener('input', () => {
+  if(output.value.trim()) {
+    btnCopy.disabled = false
+    btnCopy.title = "copiar texto"
+  }else{
+    btnCopy.disabled = true
+   btnCopy.title = "não há nada para copiar"
+  }
+})
+
 btnCopy.addEventListener('click', () => {
-  navigator.clipboard.writeText(output.value)
+    
+  if(output.value.trim()){
+    
+    navigator.clipboard.writeText(output.value)
+    copiado.classList.remove('hidden')
+    copiado.classList.add('anmc-copy')
+    setTimeout(function() {
+      copiado.classList.add('hidden')
+      copiado.classList.remove('anmc-copy')
+    },4000)
+  }
 })
 
 btnColar.addEventListener('click', () => {
   navigator.clipboard.readText().then((texto) =>{
     input.value = texto
-    btt.disabled = false
+    if(input.value.trim()){
+      btt.disabled = false
+    }
 
   })
 
@@ -53,20 +77,21 @@ btnInformal.addEventListener('click', async () => {
 input.addEventListener('input', async () => {
   if (input.value.trim()) {
     btt.disabled = false
+    btt.title = "Corrigir texto"
   } 
   else{
     btt.disabled = true
+    btt.title = "Não há nada para corrigir"
   }
 })
-
-
-
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
   const valorInput = input.value 
   console.log(valorInput)
-  output.value = "..."
+  output.value = ""
+  output.placeholder = ""
+  loader.classList.remove('hidden')
 
   const responce = await fetch("https://api-rest-w0uk.onrender.com/chat" ,{
     method: "POST",
@@ -77,9 +102,16 @@ form.addEventListener('submit', async (event) => {
   } 
   )
   try{
+    if (!responce.ok){
+      throw new error(`erro ${responce.status}`)
+    }
      const data = await responce.json()
+     loader.classList.add('hidden')
      output.value = data.msg
+     output.dispatchEvent(new Event('input'))
+
   }catch(error){
+    output.value  = "Bah ocorreu um erro, tente novamente"
     console.error(error)
   }
  

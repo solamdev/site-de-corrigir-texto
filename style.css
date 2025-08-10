@@ -2,8 +2,7 @@
         margin: 0;
         padding: 0;
         border: 0;
-        
-        
+      
     }
     
    
@@ -16,17 +15,23 @@
     background-color: #fffffd
     }
 
-
+    .form label{
+        font-family: "Lobster" ;
+        letter-spacing: 1.5px;
+        position: relative;
+        bottom: 2px;
+        box-shadow: 0 0 0 black;
+    }
 
     .box{
-    gap: 5px;
+    gap: .5rem;
     display: flex;
     justify-content: center;
     background-color: #dcdada;
-    height: 500px;
-    width: 700px;
+    height: 31rem;
+    width: 43rem;
     border-radius: 3%;
-    border: solid, 2px;
+    border: solid 2px;
     z-index: 10;
     
     }
@@ -34,36 +39,37 @@
         .boxOutput{
            flex-direction: column;
            display: flex;
+           position: relative;
         }
 
          .boxinput{
             flex-direction: column;
             display: flex; 
-            height: 550px;
-            width: 340px;
+            height: 34rem;
+            width: 21rem;
         }  
 
 .input{
-   width: 330px;
-    height: 450px;
+   width: 20rem;
+    height: 28rem;
 }
 
 .output{
-   width: 330px;
-   height: 450px;
+   width: 20rem;
+   height: 28rem;
 }
 
 
 label {
-    margin-left: 100px;
+    margin-left: 6rem;
 }
 
 .btt {
     position: relative; 
     top: 1px;
-    left: 38px;
-    width: 180px;
-    height: 30px;
+    left: 2rem;
+    width: 11rem;
+    height: 1.7rem;
     background-color: #0151ff;
     color: #eaeaea;
     border-radius: 10px;
@@ -80,16 +86,16 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
     
   
 }
 
 .btn-informal{
-    margin-right: 60px; 
-    height: 30px;
-    width: 130px;
-    border-radius: 8%;
+    margin-right: 4rem; 
+    height: 2rem;
+    width: 8rem;
+    border-radius: 8px;
    background-color: #c3c3c3;
     box-shadow: 1px 10px 20px #888888;
     border: solid whitesmoke 2px;
@@ -98,10 +104,10 @@ label {
 }
 
 .btn-equilibrado{
-margin-right: 60px;
-height: 30px;
-width: 130px;
-border-radius: 8%;
+margin-right: 4rem;
+height: 2rem;
+width: 8rem;
+border-radius: 8px;
 box-shadow: 1px 10px 20px #888888;
   background-color: #c3c3c3;
   border: solid whitesmoke 2px;
@@ -110,10 +116,10 @@ box-shadow: 1px 10px 20px #888888;
 }
 
 .btn-formal{
-margin-right: 60px;
- height: 30px;
- width: 130px;
- border-radius: 8%;
+margin-right: 4rem;
+ height: 2rem;
+ width: 8rem;
+ border-radius: 8px;
  border: solid, 2px;
  border: silver;
  box-shadow: 1px 10px 20px #888888;
@@ -133,36 +139,36 @@ margin-right: 60px;
 }
 
 .btn-copy{
-    width: 40px;
-    height: 30px;
+    width: 1.9rem;
+    height: 1.9rem;
     border-radius: 50%;
     position: relative;
-    left: 290px;
+    left: 18rem;
     top: 1px;
     cursor: pointer;
 
 }
 
 .copy{
-    width: 32px;
-    height: 32px;
+    width: 1.8rem;
+    height: 1.8rem;
     border-radius: 50%;
     color: #0151ff;
 } 
 
 .btn-colar{
-    height: 30px;
-    width: 30px;
+    height: 1.8rem;
+    width: 1.9rem;
     border-radius: 50%;
     position: relative;
-    left: 300px;
-    bottom: 30px;
+    left: 18rem;
+    bottom: 1.7rem;
     cursor: pointer;
 }
 
 .colar{
-    width: 30px;
-    height: 30px;
+    width: 1.8rem;
+    height: 1.8rem;
     border-radius: 50%;
 }
 
@@ -173,9 +179,107 @@ margin-right: 60px;
 }
 
 .github{
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    bottom: 16rem;
+    top: 0;
+    left: 0;
+    right: 15rem;
+}
+
+.btn-github a:hover{
+    background-color: #0151ff;
+    height: 40px;
+    width: 40px;
+}
+
+.copiado{
+    height: 25px;
+    width: 110px;
+    border-radius: 15px;
+    background-color: #535353;
     position: relative;
-    bottom: 260px;
-    right: 236px;
+    top: 320px;
+    right: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copiado p {
+    color: #ffffff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: .8rem;
+}
+
+.copiado img{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: relative;
+   left: 2px;
+}
+
+@keyframes descer{
+    from{
+        transform: translateY(-50px);
+    }
+    to {
+        transform: translateY(50px);
+    }
+}
+
+.anmc-copy{
+    animation: subir 0.5s ease-out forwards ,
+     descer 2s ease-out 3s forwards;
+}
+
+
+@keyframes subir{
+    from{
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-62px);
+    }
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.loader{
+    position: absolute;
+    right: 88%;
+    bottom: 92%;         
+    font-size: 30px;
+    
+    }
+    
+    .loader span{
+    display: inline-block;
+    animation: loader 1s infinite;
+}
+
+
+.loader span:nth-child(1){
+    animation-delay: 0s;
+
+}
+.loader span:nth-child(2){
+    animation-delay: 0.2s;
+
+}
+.loader span:nth-child(3){
+    animation-delay: 0.4s;
+
+}
+
+@keyframes loader {
+    0%, 100% {opacity: 0.25;}
+    50% {opacity: 1; }
+    
 }
