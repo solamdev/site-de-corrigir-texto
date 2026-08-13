@@ -1,4 +1,4 @@
-const btt = document.querySelector('.btt')
+const btnAcion = document.querySelector('.btn-action')
 const input = document.querySelector('.input')
 const output = document.querySelector('.output')
 const form = document.querySelector('.form')
@@ -9,6 +9,7 @@ const btnColar = document.querySelector('.btn-colar')
 const btnCopy = document.querySelector('.btn-copy')
 const copiado = document.querySelector('.copiado')
 const loader = document.querySelector('.loader')
+const btnTema = document.querySelector('.btn-tema')
 
 let active = "equilibrado"
 
@@ -58,7 +59,7 @@ btnColar.addEventListener('click', () => {
   navigator.clipboard.readText().then((texto) =>{
     input.value = texto
     if(input.value.trim()){
-      btt.disabled = false
+      btnAcion.disabled = false
     }
 
   })
@@ -74,14 +75,22 @@ btnInformal.addEventListener('click', async () => {
   console.log(active)
 })
 
+input.addEventListener('keydown',async (e) => {
+ if(e.key === "Enter" && !btnAcion.disabled) {
+   form.requestSubmit();
+ }
+})
+
+
+
 input.addEventListener('input', async () => {
   if (input.value.trim()) {
-    btt.disabled = false
-    btt.title = "Corrigir texto"
+    btnAcion.disabled = false
+    btnAcion.title = "Corrigir texto"
   } 
   else{
-    btt.disabled = true
-    btt.title = "Não há nada para corrigir"
+    btnAcion.disabled = true
+    btnAcion.title = "Não há nada para corrigir"
   }
 })
 
@@ -93,7 +102,7 @@ form.addEventListener('submit', async (event) => {
   output.placeholder = ""
   loader.classList.remove('hidden')
 
-  const responce = await fetch("https://api-rest-w0uk.onrender.com/chat" ,{
+  const responce = await fetch("https://api-rest-theta-ashen.vercel.app/chat" ,{ 
     method: "POST",
     headers:{
       "Content-Type": "application/json"
@@ -103,7 +112,7 @@ form.addEventListener('submit', async (event) => {
   )
   try{
     if (!responce.ok){
-      throw new error(`erro ${responce.status}`)
+      throw new Error(`erro ${responce.status}`)
     }
      const data = await responce.json()
      loader.classList.add('hidden')
@@ -111,9 +120,41 @@ form.addEventListener('submit', async (event) => {
      output.dispatchEvent(new Event('input'))
 
   }catch(error){
-    output.value  = "Bah ocorreu um erro, tente novamente"
+  output.value  = "Bah ocorreu um erro, tente novamente"
     console.error(error)
+    loader.classList.add('hidden')
   }
- 
+  
 })
+const html = document.documentElement
+
+let key = "tema"
+const tema = localStorage.getItem(key)
+
+if(tema === "dark"){
+  html.setAttribute("dark", "")
+}else{
+  html.removeAttribute("dark")
+}
+
+
+
+
+btnTema.addEventListener('click', () => {
+  setTimeout(() => {
+    
+    if(html.hasAttribute("dark")){
+        html.removeAttribute("dark")
+        localStorage.setItem(key, "ligth")
+    }
+    else{
+      html.setAttribute("dark", "")
+      localStorage.setItem(key, "dark")
+    }
+  }, "0050");
+
+    
+})
+
+
 
